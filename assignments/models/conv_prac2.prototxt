@@ -1,0 +1,37 @@
+name: "LinearReg"
+layer {
+  name: "input"
+  type: "MemoryData"
+  top: "data"
+  top: "actual"
+  memory_data_param {
+    batch_size: 10
+    channels: 1
+    height: 1
+    width: 2
+  }
+}
+layer {
+  name: "ip"
+  type: "InnerProduct"
+  bottom: "data"
+  top: "predicted"
+  inner_product_param { 
+  	num_output: 1
+  	weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "loss"
+  type: "EuclideanLoss"
+  bottom: "predicted"
+  bottom: "actual"  
+  top: "loss"
+}

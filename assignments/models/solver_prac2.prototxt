@@ -1,0 +1,14 @@
+net: "models/conv_prac2.prototxt"
+#test_iter: 1000
+#test_interval: 1000 
+base_lr: 0.001
+lr_policy: "step"
+gamma: 0.1
+stepsize: 50000
+display: 100
+max_iter: 100000
+momentum: 0
+weight_decay: 0
+snapshot: 1000
+snapshot_prefix: "models/snapshot/conv_prac2_train"
+solver_mode: CPU
